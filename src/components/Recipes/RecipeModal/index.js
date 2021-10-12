@@ -1,19 +1,28 @@
 import React from 'react';
+import useHooks from '../../../hook';
+
 import './index.css';
 
-const RecipeModal = ({ data, name, setEntry }) => {
-  return <>
+const RecipeModal = ({ data, name }) => {
+  const { setEntry, goTo } = useHooks();
+  const handleClick = (entry) => {
+    setEntry(entry);
+    goTo(`/recipe/${entry.idMeal}`);
+  }
+  return <div>
     <div className="category">
       <h2 className="category-title">{name}</h2>
     </div>
-    {data.length && data.map(({ strInstructions, strMealThumb, strMeal, ...rest }, idx) => (<div className="modal" key={idx} onClick={() => setEntry({ strInstructions, strMealThumb, strMeal, ...rest })}>
-      <div className="image-container" onClick={() => setEntry({ strInstructions, strMealThumb, strMeal, ...rest })}>
-        <img src={strMealThumb} alt={strMeal} onClick={() => setEntry({ strInstructions, strMealThumb, strMeal, ...rest })} />
-      </div>
-      <h2 className="title" onClick={() => setEntry({ strInstructions, strMealThumb, strMeal, ...rest })} >{strMeal}</h2>
-      <p className="content" onClick={() => setEntry({ strInstructions, strMealThumb, strMeal, ...rest })} >{strInstructions}</p>
-    </div>))}
-  </>
+    <div className="modal-container">
+      {data.length && data.map((item, idx) => (<div className="modal" key={idx} onClick={() => handleClick(item)}>
+        <div className="image-container" onClick={() => handleClick(item)}>
+          <img src={item.strMealThumb} alt={item.strMeal} onClick={() => handleClick(item)} />
+        </div>
+        <h2 className="title" onClick={() => handleClick(item)} >{item.strMeal}</h2>
+        <p className="content" onClick={() => handleClick(item)} >{item.strInstructions}</p>
+      </div>))}
+    </div>
+  </div>
 }
 
 export default RecipeModal;

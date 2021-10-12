@@ -4,3 +4,14 @@ export const groupBy = (xs, key) => {
     return rv;
   }, {});
 };
+
+export const generateIngredients = (item) => {
+  const ingredients = [];
+  for (const k in item) {
+    if (k.includes('strIngredient') && !!item[k]) {
+      const num = k.match(/\d+$/)[0];
+      ingredients.push(`${item[`strMeasure${num}`]} ${item[k]}`);
+    }
+  }
+  return ingredients;
+}

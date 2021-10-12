@@ -5,7 +5,7 @@ import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 import Page from './Page';
 import './index.css';
 
-const Search = ({ setEntry }) => {
+const Search = () => {
   const [active, setActive] = useState(false);
   const classes = classNames('search', { 'button': !active, 'page': active });
   if (!active) {
@@ -14,7 +14,7 @@ const Search = ({ setEntry }) => {
     </div>
   }
   return <div className={classes}>
-    <Page hidePage={() => setActive(!active)} setEntry={setEntry} />
+    <Page hidePage={() => setActive(!active)} />
   </div>
 }
 

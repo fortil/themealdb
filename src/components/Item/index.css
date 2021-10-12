@@ -1,20 +1,38 @@
-.modal {
-  max-height: 420px;
+.page {
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+}
+
+.page .page-header {
+  position: relative;
+  display: flex;
+  background-color: grey;
+  padding: 15px;
+  color: white;
+  justify-content: space-between;
+}
+
+.page .page-modal {
   display: block;
   border-radius: 2%;
   box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.4);
   margin-bottom: 15px;
   background-color: white;
+  text-align: left;
+  color: black;
 }
 
-.modal .image-container {
+.page .page-modal .page-image-container {
   position: relative;
   overflow: hidden;
   height: 300px;
   width: 100%;
 }
 
-.modal .image-container img {
+.page .page-modal .page-image-container img {
   top: 50%;
   left: 50%;
   position: relative;
@@ -23,14 +41,12 @@
   width: 100%;
 }
 
-.modal .title {
+.page .page-modal .page-title {
   max-height: 80px;
+  padding: 0 10px;
 }
 
-.modal .content {
-  max-height: 40px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+.page .page-modal .page-content {
+  max-height: 1400px;
   padding: 0 10px;
 }

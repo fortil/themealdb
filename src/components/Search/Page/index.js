@@ -3,10 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { CONSTANTS } from '../../../utils/';
+import useHooks from '../../../hook';
 import './index.css';
 
-const Page = ({ setEntry, hidePage }) => {
+const Page = ({ hidePage }) => {
   const [{ text, entries }, setState] = useState({ text: '', entries: [] });
+  const { setEntry, goTo } = useHooks();
   const inputEl = useRef(null);
 
   useEffect(() => {
@@ -42,6 +44,12 @@ const Page = ({ setEntry, hidePage }) => {
 
   }, [text]);
 
+  const handleClick = (entry) => {
+    setEntry(entry);
+    goTo(`/recipe/${entry.idMeal}`);
+    hidePage();
+  }
+
   return <div className="search-bar">
     <div className="header">
       <FontAwesomeIcon icon={faArrowLeft} size={"2x"} onClick={() => hidePage()} />
@@ -49,7 +57,7 @@ const Page = ({ setEntry, hidePage }) => {
     </div>
     <div className="list">
       <ul>
-        {(entries.length && entries.map(({ strMeal, ...rest }, idx) => <li key={idx} onClick={() => setEntry({ strMeal, ...rest })}>{strMeal}</li>)) || 'No Results'}
+        {(entries.length && entries.map(({ strMeal, ...rest }, idx) => <li key={idx} onClick={() => handleClick({ strMeal, ...rest })}>{strMeal}</li>)) || 'No Results'}
       </ul>
     </div>
   </div>
