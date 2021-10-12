@@ -1,25 +1,17 @@
+import React, { useState } from 'react';
 import Search from './components/Search';
-import logo from './logo.svg';
+import Recipes from './components/Recipes';
 import './App.css';
 
 function App() {
+  const [entry, setEntry] = useState(null);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Recipes entry={entry} setEntry={setEntry} />
       </header>
-      <Search active={false} />
+      <Search setEntry={setEntry} />
     </div>
   );
 }

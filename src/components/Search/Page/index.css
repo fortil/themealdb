@@ -1,0 +1,39 @@
+.search-bar {
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+}
+
+.search-bar .list {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.search-bar .list ul {
+  width: 100%;
+  text-align: left;
+}
+
+.search-bar .list ul li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search-bar .header {
+  position: relative;
+  display: flex;
+  background-color: grey;
+  padding: 15px;
+  color: white;
+}
+
+.search-bar .header input {
+  background-color: grey;
+  color: white;
+  /* padding: 0px; */
+  margin-left: 20px;
+  font-size: calc(10px + 2vmin);
+  border: unset;
+  width: calc(100% - 20px);
+}
